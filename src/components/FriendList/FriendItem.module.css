@@ -1,0 +1,11 @@
+.iconActive {
+  display: block;
+  margin-left: 14px;
+  color: #56ab56;
+}
+
+.iconDisactive {
+  display: block;
+  margin-left: 14px;
+  color: #e54c65;
+}
