@@ -1,16 +1,28 @@
 import PropTypes from 'prop-types';
 
 import StatisticItem from './StatisticItem';
+import { StatisticBox, StatisticElem } from './Statistic.styled';
 
-export default function StatisticList({ stats }) {
+function getRandomHexColor() {
+  return `#${Math.floor(Math.random() * 16777215)
+    .toString(16)
+    .padStart(6, 0)}`;
+}
+
+export default function StatisticList({ stats, title = 'Upload stats' }) {
   return (
-    <ul class="stat-list">
+    <StatisticBox>
       {stats.map(item => (
-        <li key={item.id} class="item">
+        <StatisticElem
+          key={item.id}
+          style={{
+            backgroundColor: `${getRandomHexColor()}`,
+          }}
+        >
           <StatisticItem label={item.label} percentage={item.percentage} />
-        </li>
+        </StatisticElem>
       ))}
-    </ul>
+    </StatisticBox>
   );
 }
 

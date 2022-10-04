@@ -3,24 +3,35 @@ import data from '../data/data.json';
 import friends from '../data/friends.json';
 import transactions from '../data/transactions.json';
 
+import styled from 'styled-components';
+
 import { Section } from './Section/Section';
 import Profile from './Profile/Profile';
 import StatisticList from './Statistic/StatisticList';
-import FriendList from './FriendList/FriendList';
-import TransactionHistory from './TransactionHistory/TransactionHistory';
+import FriendList from './Friends/FriendList';
+import TransactionHistory from './Transactions/TransactionHistory';
+
+import {
+  StatisticTitle,
+  StatisticSection,
+} from '../components/Statistic/Statistic.styled';
+
+import { TransactionSection } from './Transactions/Transaction.styled';
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: ${props => props.theme.colors.dark};
+  background-color: #727171;
+`;
 
 export const App = () => {
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101',
-      }}
-    >
+    <Container>
       <Section>
         <Profile
           username={user.username}
@@ -32,15 +43,20 @@ export const App = () => {
           likes={user.stats.likes}
         />
       </Section>
-      <Section title="Upload stats">
-        <StatisticList stats={data} />
-      </Section>
+      <StatisticSection>
+        {data.title ? (
+          <StatisticTitle>{data.title}</StatisticTitle>
+        ) : (
+          <StatisticTitle>Upload stats</StatisticTitle>
+        )}
+        <StatisticList stats={data} title={data.title} />
+      </StatisticSection>
       <Section>
         <FriendList friends={friends} />
       </Section>
-      <Section>
+      <TransactionSection>
         <TransactionHistory items={transactions} />
-      </Section>
-    </div>
+      </TransactionSection>
+    </Container>
   );
 };

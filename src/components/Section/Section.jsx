@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 
-import css from 'components/Section/Section.module.css';
+import { StatisticSection } from 'components/Section/Section.styled';
 
 export const Section = ({ children, title }) => {
   return (
-    <section className={css.section}>
+    <StatisticSection>
       {title && <h2>{title}</h2>}
       {children}
-    </section>
+    </StatisticSection>
   );
 };
 

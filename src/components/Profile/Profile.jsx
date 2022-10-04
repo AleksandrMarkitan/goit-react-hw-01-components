@@ -1,5 +1,16 @@
 import PropTypes from 'prop-types';
 
+import {
+  ProfileBox,
+  Description,
+  Name,
+  TagLocation,
+  StatisticList,
+  StatisticItem,
+  SpanLabel,
+  SpanQuantity,
+} from './Profile.styled';
+
 const defaultAvatarImg =
   'https://cdn-icons-png.flaticon.com/512/1077/1077012.png';
 
@@ -13,29 +24,29 @@ export default function Profile({
   likes,
 }) {
   return (
-    <div className="profile">
-      <div className="description">
-        <img src={avatar} alt="User avatar" className="avatar" />
-        <p className="name">{username}</p>
-        <p className="tag">@{tag} </p>
-        <p className="location">{location} </p>
-      </div>
+    <ProfileBox>
+      <Description>
+        <img src={avatar} alt="User avatar" width="100" className="avatar" />
+        <Name>{username}</Name>
+        <TagLocation>@{tag} </TagLocation>
+        <TagLocation>{location} </TagLocation>
+      </Description>
 
-      <ul className="stats">
-        <li>
-          <span className="label">Followers</span>
-          <span className="quantity">{followers}</span>
-        </li>
-        <li>
-          <span className="label">Views</span>
-          <span className="quantity">{views}</span>
-        </li>
-        <li>
-          <span className="label">Likes</span>
-          <span className="quantity">{likes}</span>
-        </li>
-      </ul>
-    </div>
+      <StatisticList>
+        <StatisticItem>
+          <SpanLabel>Followers</SpanLabel>
+          <SpanQuantity>{followers}</SpanQuantity>
+        </StatisticItem>
+        <StatisticItem>
+          <SpanLabel>Views</SpanLabel>
+          <SpanQuantity>{views}</SpanQuantity>
+        </StatisticItem>
+        <StatisticItem>
+          <SpanLabel>Likes</SpanLabel>
+          <SpanQuantity>{likes}</SpanQuantity>
+        </StatisticItem>
+      </StatisticList>
+    </ProfileBox>
   );
 }
 
