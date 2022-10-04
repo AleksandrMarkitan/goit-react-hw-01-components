@@ -12,11 +12,27 @@ export const Table = styled.table`
   border-radius: 10px;
   overflow: hidden;
 `;
-export const Thead = styled.thead`
+
+export const Th = styled.th`
   height: 30px;
   color: ${props => props.theme.colors.light};
   background-color: #4cc6f5;
+
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+
+  & {
+    :first-child {
+      border-left: none;
+    }
+  }
+  & {
+    :last-child {
+      border-right: none;
+    }
+  }
 `;
+
 export const TrData = styled.tr`
   height: 30px;
   text-align: center;
