@@ -60,9 +60,16 @@ export const StatisticItem = styled.li`
   justify-content: center;
   align-items: center;
   gap: 6px;
-  flex-basis: calc(100% / 3);
+  flex-basis: calc((100% - 2px) / 3);
 
   background-color: ${props => props.theme.colors.secondaryBgColor};
+
+  border-top: 1px solid #7f8e9d;
+  & {
+    :not(:last-child) {
+      border-right: 1px solid #7f8e9d;
+    }
+  }
 `;
 
 export const SpanLabel = styled.span`
